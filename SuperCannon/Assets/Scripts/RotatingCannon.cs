@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RotatingCannon : MonoBehaviour
 {
-   
+
+    GameObject smallbulletprefab;
     // Start is called before the first frame update
     void Start()
     {
-        
+        smallbulletprefab = Resources.Load("SmallBullet") as GameObject;
     }
 
     // Update is called once per frame
@@ -24,6 +25,11 @@ public class RotatingCannon : MonoBehaviour
 
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, newrotation, Time.deltaTime * 2);
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject mysmallbullet = Instantiate(smallbulletprefab, this.transform.position, Quaternion.identity);
+            
+        }
 
     }
 }
