@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallBullet : Bullet
+public class LargeBullet : Bullet
 {
-    
+ 
     // Start is called before the first frame update
     protected override void Start()
     {
-        speed = 10f;
+        speed = 4f;
         base.Start();
-   
+
     }
 
 

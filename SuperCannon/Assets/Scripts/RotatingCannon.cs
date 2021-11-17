@@ -5,11 +5,14 @@ using UnityEngine;
 public class RotatingCannon : MonoBehaviour
 {
 
-    GameObject smallbulletprefab;
+    Transform cannontip;
+    GameObject smallbulletprefab, largebulletprefab;
     // Start is called before the first frame update
     void Start()
     {
+        cannontip = this.gameObject.transform.GetChild(0);
         smallbulletprefab = Resources.Load("SmallBullet") as GameObject;
+        largebulletprefab = Resources.Load("LargeBullet") as GameObject;
     }
 
     // Update is called once per frame
@@ -27,9 +30,17 @@ public class RotatingCannon : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject mysmallbullet = Instantiate(smallbulletprefab, this.transform.position, Quaternion.identity);
+            GameObject mysmallbullet = Instantiate(smallbulletprefab, cannontip.position, Quaternion.identity);
             
         }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject mysmallbullet = Instantiate(largebulletprefab, cannontip.position, Quaternion.identity);
+
+        }
+
+
 
     }
 }
