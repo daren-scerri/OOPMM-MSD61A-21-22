@@ -5,15 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     protected float speed = 5f;
+    Vector2 direction;
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
         Vector3 mousepos = GameData.GetMouseTarget();
 
         //ADD CODE HERE TO DECIDE VELOCITY BASED ON MOUSE POSITION
 
-        Vector2 direction = mousepos - this.transform.position;
+        direction = mousepos - this.transform.position;
         direction.Normalize();
         Vector2 newvelocity = direction * speed;
 
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         if (this.gameObject.transform.position.y > (GameData.GetYMax() + 1)) Destroy(this.gameObject);
         if (this.gameObject.transform.position.y < (GameData.GetYMin() - 1)) Destroy(this.gameObject);
         if (this.gameObject.transform.position.x > (GameData.GetXMax() + 1)) Destroy(this.gameObject);
-        if (this.gameObject.transform.position.x < (GameData.GetXMin() - 1)) Destroy(this.gameObject);
+        if (this.gameObject.transform.position.x < (GameData.XMin - 1)) Destroy(this.gameObject);
     }
 }
 
