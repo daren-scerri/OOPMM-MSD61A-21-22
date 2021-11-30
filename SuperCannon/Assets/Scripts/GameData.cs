@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GameData : MonoBehaviour
 {
-    static float XMax, YMin, YMax;
+    
     static Camera gameCamera = Camera.main;
     static Vector3 mousePos = new Vector3();
     
@@ -23,31 +23,30 @@ public abstract class GameData : MonoBehaviour
         get { return gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x; }
     }
 
-
- 
-
-    public static float GetXMax()
+    public static float XMax
     {
-        XMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
-       // Debug.Log("XMax: " + XMax.ToString());
-        return XMax;
+        get { return gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x; }
     }
 
-    public static float GetYMin()
+
+    public static float YMin
     {
-        YMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
-        // Debug.Log("YMin: " + YMin.ToString());
-        return YMin;
+        get { return gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y; }
     }
 
-    public static float GetYMax()
+    public static float YMax
     {
-        YMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
-        // Debug.Log("YMax: " + YMax.ToString());
-        return YMax;
+        get { return gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y; }
     }
 
-    public static Vector3 GetMouseTarget()
+
+    public static Vector3 MousePos
+    {
+        get { return GetMouseTarget(); }
+    }
+
+
+    private static Vector3 GetMouseTarget()
     {
         mousePos = gameCamera.ScreenToWorldPoint(Input.mousePosition);
         return mousePos;

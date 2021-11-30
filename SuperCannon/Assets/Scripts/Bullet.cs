@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void Start()
     {
-        Vector3 mousepos = GameData.GetMouseTarget();
+        Vector3 mousepos = GameData.MousePos;
 
         //ADD CODE HERE TO DECIDE VELOCITY BASED ON MOUSE POSITION
 
@@ -21,9 +21,9 @@ public class Bullet : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (this.gameObject.transform.position.y > (GameData.GetYMax() + 1)) Destroy(this.gameObject);
-        if (this.gameObject.transform.position.y < (GameData.GetYMin() - 1)) Destroy(this.gameObject);
-        if (this.gameObject.transform.position.x > (GameData.GetXMax() + 1)) Destroy(this.gameObject);
+        if (this.gameObject.transform.position.y > (GameData.YMax + 1)) Destroy(this.gameObject);
+        if (this.gameObject.transform.position.y < (GameData.YMin - 1)) Destroy(this.gameObject);
+        if (this.gameObject.transform.position.x > (GameData.XMax + 1)) Destroy(this.gameObject);
         if (this.gameObject.transform.position.x < (GameData.XMin - 1)) Destroy(this.gameObject);
     }
 }

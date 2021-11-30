@@ -18,7 +18,7 @@ public class RotatingCannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouselook = this.transform.position - GameData.GetMouseTarget();
+        Vector3 mouselook = this.transform.position - GameData.MousePos;
 
         Quaternion newrotation = Quaternion.LookRotation(mouselook, Vector3.forward);
         newrotation.x = 0f;  //reset back any x rotation to 0 since we only want to rotate around the z axis

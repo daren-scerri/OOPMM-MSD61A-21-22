@@ -15,8 +15,8 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.name.Contains("Bullet"))
             {
             Destroy(other.gameObject);
-            GameData.Score++;
-            Debug.Log("Score : " + GameData.Score.ToString());
+            //GameObject.Find("GameManagerHolder").GetComponent<GameManager>().IncreaseScore(5);
+            GameManager._instance.IncreaseScore(5);
             Destroy(this.gameObject);
             }
 
