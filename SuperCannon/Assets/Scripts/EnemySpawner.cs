@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
             enemycount++;
             float xspawnpos = Random.Range(GameData.XMin, GameData.XMax);
             Instantiate( enemyList[enemychoice] , new Vector3(xspawnpos, GameData.YMax + 1f), Quaternion.identity);
-            if (enemycount >= 10) break;
+         //   if (enemycount >= 10) break;
             yield return new WaitForSeconds(0.5f);
             
         }

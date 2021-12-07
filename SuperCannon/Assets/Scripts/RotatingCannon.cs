@@ -7,6 +7,9 @@ public class RotatingCannon : MonoBehaviour
 
     Transform cannontip;
     GameObject smallbulletprefab, largebulletprefab;
+
+    Coroutine fire1coroutine, fire2coroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +33,36 @@ public class RotatingCannon : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject mysmallbullet = Instantiate(smallbulletprefab, cannontip.position, Quaternion.identity);
-            
+            fire1coroutine = StartCoroutine(Smallbulletfiring());
         }
+        else if (Input.GetButtonUp("Fire1")) StopCoroutine(fire1coroutine);
+
 
         if (Input.GetButtonDown("Fire2"))
         {
-            GameObject mysmallbullet = Instantiate(largebulletprefab, cannontip.position, Quaternion.identity);
+            fire2coroutine = StartCoroutine(Largebulletfiring());
+
+
+        } else if (Input.GetButtonUp("Fire2")) StopCoroutine(fire2coroutine);
+
+
+        IEnumerator Smallbulletfiring()
+        {
+            while (true)
+            {
+                GameObject mysmallbullet = Instantiate(smallbulletprefab, cannontip.position, Quaternion.identity);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
+
+        IEnumerator Largebulletfiring()
+        {
+            while (true)
+            {
+                GameObject mylargebullet = Instantiate(largebulletprefab, cannontip.position, Quaternion.identity);
+                yield return new WaitForSeconds(1f);
+            }
 
         }
 

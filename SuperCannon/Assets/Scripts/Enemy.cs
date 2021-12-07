@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    ITakeDamage damageable;
 
+    [SerializeField] int starthealth;
+    private void Start()
+    {
+        damageable = GetComponent<ITakeDamage>();
+        damageable.health = starthealth;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "floor")
@@ -16,8 +23,8 @@ public class Enemy : MonoBehaviour
             {
             Destroy(other.gameObject);
             //GameObject.Find("GameManagerHolder").GetComponent<GameManager>().IncreaseScore(5);
-            GameManager._instance.IncreaseScore(5);
-            Destroy(this.gameObject);
+            
+            damageable.TakeDamage(1);
             }
 
     }
